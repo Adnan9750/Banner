@@ -463,7 +463,7 @@ const Profiel5 = () => {
                             <Box sx={{ display: 'flex', justifyContent: 'end', gap: 2 }}>
                                 <Box sx={{ display: 'flex', justifyContent: 'end' }}>
                                     <Button variant='outlined' onClick={handlePredictTotal}>
-                                        Predict Price
+                                        Get Price
                                     </Button>
                                 </Box>
                                 <Box sx={{ display: 'flex', justifyContent: 'end' }}>

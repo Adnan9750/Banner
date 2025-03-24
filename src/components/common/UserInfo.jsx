@@ -15,10 +15,15 @@ const UserInfo = () => {
 
     const [loading, setLoading] = useState(false)
     const [userForm, setUserForm] = useState({
-        username: '',
+        firstname: '',
+        lastname: '',
+        companyname: '',
         email: '',
         address: '',
-        number: ''
+        city: '',
+        state: '',
+        zip: '',
+        country: ''
     })
 
     const breadcrumbItems = [
@@ -65,20 +70,37 @@ const UserInfo = () => {
                 ...userForm
             }
             const response = await API.post('/create-user/', data)
-            console.log("Place order:", response);
+            // console.log("Place order:", response);
             if (response?.data?.success) {
-                setMessage('Order Place Successfully')
+                const paymentData = {
+                    amount: totalPrice,
+                    description: orderID,
+                    redirect_url: "https://banner-nu-seven.vercel.app/"
+                };
+                try {
+                    const res = await API.post('/create-payment/', paymentData);
+
+                    if (res.data.checkout_url) {
+                        window.location.href = res.data.checkout_url;
+                    }
+                    Cookies.remove("orderId")
+                } catch (error) {
+                    console.error("Payment error:", error);
+                }
             }
             setUserForm({
-                username: '',
-                email: '',
+                firstname: '', lastname: '',
+                companyname: '', email: '',
                 address: '',
-                number: ''
+                city: '',
+                state: '',
+                zip: '',
+                country: ''
             })
 
-            setTimeout(() => {
-                setMessage('')
-            }, 3000)
+            // setTimeout(() => {
+            //     setMessage('')
+            // }, 3000)
 
         } catch (error) {
 
@@ -105,11 +127,6 @@ const UserInfo = () => {
                                 !loading && (
                                     <>
                                         <Grid2 container spacing={2}>
-                                            {/* <Grid2 items size={{ xs: 12, md: 6 }}>
-                                                <Box>
-                                                    <ListItemText primary="" secondary={orderDetail?.profile || '--'}></ListItemText>
-                                                </Box>
-                                            </Grid2> */}
                                             {
                                                 originalData?.thickness_pricing &&
                                                 <Grid2 items size={{ xs: 12, md: 4 }}>
@@ -170,7 +187,7 @@ const UserInfo = () => {
                                                             {currPrice?.letter}
                                                         </Grid2>
                                                         <Grid2 items size={{ xs: 3, md: 3 }}>
-                                                            {currPrice?.price}
+                                                            €{currPrice?.price}
                                                         </Grid2>
                                                         <Grid2 items size={{ xs: 3, md: 3 }}>
                                                             {currPrice?.scaled_height}
@@ -206,41 +223,41 @@ const UserInfo = () => {
                                     <Alert severity='success'>{messsage}</Alert>
                                 }
 
-                                <Grid2 items size={12}>
+                                <Grid2 items size={{ xs: 12, md: 6 }}>
                                     <Box>
-                                        <InputLabel variant='body2'>User Name</InputLabel>
+                                        <InputLabel variant='body2'>First Name</InputLabel>
                                         <TextField
                                             fullWidth
-                                            name='username'
-                                            value={userForm.username}
+                                            name='firstname'
+                                            value={userForm.firstname}
                                             onChange={handleInputChange}
-                                            placeholder='Enter your name'
+                                            placeholder='Enter your first name'
+                                        />
+                                    </Box>
+                                </Grid2>
+
+                                <Grid2 items size={{ xs: 12, md: 6 }}>
+                                    <Box>
+                                        <InputLabel variant='body2'>Last Name</InputLabel>
+                                        <TextField
+                                            fullWidth
+                                            name='lastname'
+                                            value={userForm.lastname}
+                                            onChange={handleInputChange}
+                                            placeholder='Enter your last name'
                                         />
                                     </Box>
                                 </Grid2>
 
                                 <Grid2 items size={12}>
                                     <Box>
-                                        <InputLabel variant='body2'>Email</InputLabel>
+                                        <InputLabel variant='body2'>Company Name</InputLabel>
                                         <TextField
                                             fullWidth
-                                            name='email'
-                                            placeholder='Enter your email'
-                                            value={userForm.email}
+                                            name='companyname'
+                                            value={userForm.companyname}
                                             onChange={handleInputChange}
-                                        />
-                                    </Box>
-                                </Grid2>
-
-                                <Grid2 items size={12}>
-                                    <Box>
-                                        <InputLabel variant='body2'>Number</InputLabel>
-                                        <TextField
-                                            fullWidth
-                                            name='number'
-                                            placeholder='Enter your number'
-                                            value={userForm.number}
-                                            onChange={handleInputChange}
+                                            placeholder='Enter your company name'
                                         />
                                     </Box>
                                 </Grid2>
@@ -259,15 +276,80 @@ const UserInfo = () => {
                                 </Grid2>
 
                                 <Grid2 items size={12}>
+                                    <Box>
+                                        <InputLabel variant='body2'>Email</InputLabel>
+                                        <TextField
+                                            fullWidth
+                                            name='email'
+                                            placeholder='Enter your email'
+                                            value={userForm.email}
+                                            onChange={handleInputChange}
+                                        />
+                                    </Box>
+                                </Grid2>
+
+                                <Grid2 items size={{ xs: 12, md: 6 }}>
+                                    <Box>
+                                        <InputLabel variant='body2'>City</InputLabel>
+                                        <TextField
+                                            fullWidth
+                                            name='city'
+                                            value={userForm.city}
+                                            onChange={handleInputChange}
+                                            placeholder='Enter your city'
+                                        />
+                                    </Box>
+                                </Grid2>
+
+                                <Grid2 items size={{ xs: 12, md: 6 }}>
+                                    <Box>
+                                        <InputLabel variant='body2'>State/Province</InputLabel>
+                                        <TextField
+                                            fullWidth
+                                            name='state'
+                                            value={userForm.state}
+                                            onChange={handleInputChange}
+                                            placeholder='Enter your last name'
+                                        />
+                                    </Box>
+                                </Grid2>
+
+                                <Grid2 items size={{ xs: 12, md: 6 }}>
+                                    <Box>
+                                        <InputLabel variant='body2'>Zip/Postal Code</InputLabel>
+                                        <TextField
+                                            fullWidth
+                                            name='zip'
+                                            value={userForm.zip}
+                                            onChange={handleInputChange}
+                                            placeholder='Enter your city'
+                                        />
+                                    </Box>
+                                </Grid2>
+
+                                <Grid2 items size={{ xs: 12, md: 6 }}>
+                                    <Box>
+                                        <InputLabel variant='body2'>Country</InputLabel>
+                                        <TextField
+                                            fullWidth
+                                            name='country'
+                                            value={userForm.country}
+                                            onChange={handleInputChange}
+                                            placeholder='Enter your last name'
+                                        />
+                                    </Box>
+                                </Grid2>
+
+                                <Grid2 items size={12}>
                                     <Box sx={{ display: 'flex', justifyContent: 'end' }}>
-                                        <Button onClick={handleCheckout} variant='contained'>Checkout</Button>
+                                        <Button onClick={handleCheckout} variant='contained'>Make A Payment</Button>
                                     </Box>
                                 </Grid2>
                             </Grid2>
                         </Paper>
                     </Grid2>
 
-                </Grid2>
+                </Grid2 >
             </Container >
         </>
     )

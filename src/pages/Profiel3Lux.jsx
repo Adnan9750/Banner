@@ -125,7 +125,7 @@ const Profiel3Lux = () => {
             formdata.append('data', JSON.stringify(dataObj));
 
             const response = await API.post('/get-price/', formdata)
-     
+
             if (response?.data) {
                 setTotalPrice(response?.data?.data?.totalPrice)
             }
@@ -463,7 +463,7 @@ const Profiel3Lux = () => {
                             <Box sx={{ display: 'flex', justifyContent: 'end', gap: 2 }}>
                                 <Box sx={{ display: 'flex', justifyContent: 'end' }}>
                                     <Button variant='outlined' onClick={handlePredictTotal}>
-                                        Predict Price
+                                        Get Price
                                     </Button>
                                 </Box>
                                 <Box sx={{ display: 'flex', justifyContent: 'end' }}>
