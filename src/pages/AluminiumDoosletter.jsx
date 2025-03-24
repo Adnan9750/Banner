@@ -143,6 +143,14 @@ const AluminiumDoosletter = () => {
                 <Box>
                     <Grid2 container spacing={3} justifyContent='center'>
 
+                        <Grid2 item size={10} justifyContent='end'>
+                            <Box sx={{ display: 'flex', justifyContent: 'end' }}>
+                                <Button variant='outlined' onClick={handlePredictTotal}>
+                                    Get Price
+                                </Button>
+                            </Box>
+                        </Grid2>
+
                         <Grid2 item size={10}>
 
                             <Accordion sx={{ border: '1px solid #B91C1C', boxShadow: 'none' }}>
@@ -449,21 +457,18 @@ const AluminiumDoosletter = () => {
 
                         {
                             totalPrice &&
-                            <Grid2 item size={10}>
-                                <Box sx={{ display: 'flex', justifyContent: 'end', gap: 2 }}>
-                                    <Typography variant='body1'>Total Price</Typography>
-                                    <Typography variant='body1'>{totalPrice}</Typography>
+                            <Grid2 item size={10} justifyContent='end'>
+                                <Box sx={{ display: 'flex', justifyContent: 'end' }}>
+                                    <Box sx={{ display: 'flex', justifyContent: 'end', gap: 2, border: '1px solid #B91C1C', padding: 2, borderRadius: '4px' }}>
+                                        <Typography variant='body1'>Total Price</Typography>
+                                        <Typography variant='body1'>€{totalPrice}</Typography>
+                                    </Box>
                                 </Box>
                             </Grid2>
                         }
 
                         <Grid2 item size={10} justifyContent='end'>
                             <Box sx={{ display: 'flex', justifyContent: 'end', gap: 2 }}>
-                                <Box sx={{ display: 'flex', justifyContent: 'end' }}>
-                                    <Button variant='outlined' onClick={handlePredictTotal}>
-                                        Get Price
-                                    </Button>
-                                </Box>
                                 <Box sx={{ display: 'flex', justifyContent: 'end' }}>
                                     <Button onClick={handleOrder} variant='contained'>
                                         Order Now

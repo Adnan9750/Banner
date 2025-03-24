@@ -216,7 +216,7 @@ const UserInfo = () => {
                         <Paper elevation='0' sx={{ padding: 2, border: '1px solid #B91C1C' }}>
                             <Grid2 container spacing={2}>
                                 <Grid2 items size={12}>
-                                    <Typography variant='h6'>User Info</Typography>
+                                    <Typography variant='h6'>User Information</Typography>
                                 </Grid2>
 
                                 {
