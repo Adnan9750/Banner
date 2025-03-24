@@ -203,7 +203,7 @@ const UserInfo = () => {
 
                                         <Box sx={{ display: 'flex', gap: 1, justifyContent: 'end', paddingTop: 3, paddingRight: 8 }}>
                                             <Typography variant='body1' fontWeight={600}>Total Price</Typography>
-                                            <Typography variant='body1'>{totalPrice || '--'}</Typography>
+                                            <Typography variant='body1'>€{totalPrice || '--'}</Typography>
                                         </Box>
                                     </>
                                 )
