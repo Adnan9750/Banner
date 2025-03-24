@@ -84,6 +84,7 @@ const UserInfo = () => {
                         window.location.href = res.data.checkout_url;
                     }
                     Cookies.remove("orderId")
+                    Cookies.remove("totalPrice")
                 } catch (error) {
                     console.error("Payment error:", error);
                 }
