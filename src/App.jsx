@@ -21,6 +21,7 @@ import Profiel4Detail from './components/Profiel4Detail';
 import Profiel5Detail from './components/Profiel5Detail';
 import Profiel5LuxDetail from './components/Profiel5LuxDetail';
 import API from './API';
+import SignUp from './pages/SignUp';
 
 const App = () => {
 
@@ -51,6 +52,7 @@ const App = () => {
               <Route path='/profiel5Lux' element={<Profiel5Lux />} />
               <Route path='/profiel5LuxDetail' element={<Profiel5LuxDetail />} />
               <Route path='/userInfo' element={<UserInfo />} />
+              <Route path='/SignUp' element={<SignUp />} />
             </Route>
           </Routes>
         </ThemeProvider>
