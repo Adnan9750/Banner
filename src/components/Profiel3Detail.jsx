@@ -38,23 +38,33 @@ const Profiel3Detail = () => {
 
                             <Box sx={{ pt: 4, display: 'flex', flexDirection: 'column', gap: 6 }}>
                                 <Box>
-                                    <Typography variant='body1' fontWeight={500}>Description</Typography>
+                                    <Typography variant='body1' fontWeight={500}><b>Description:</b><br />
+Aluminium gelaste doosletter, gespoten in een 2 componenten lak in elke gewenste RAL-kleur en voorzien van een 19mm translucent bodem (steekt 5-15 mm uit). Letters lichten aan de achterzijde uit, maar ook deels aan de zijkant.
+
+Algemene informatie profiel 3 deluxe met LED-verlichting
+– Reliëf	30, 50, 80, 100 of 120mm
+– Minimale x-hoogte	150mm
+– Minimale stokbreedte	20mm
+– Levertijd	ca. 3 weken
+– Garantie	2 jaar
+– Lakwerk binnenzijde	mat wit
+– Lakwerk buitenzijde	elke gewenste Ral-kleur</Typography>
                                 </Box>
 
-                                <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+                                {/* <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
                                     <Typography variant='body1' fontWeight={500}>Choose quantity</Typography>
                                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 3, border: '1px solid black', padding: 1, borderRadius: '4px' }}>
                                         <Remove fontSize='small' />
                                         <Typography>1</Typography>
                                         <Add fontSize='small' />
                                     </Box>
-                                </Box>
+                                </Box> */}
 
                                 <Box sx={{ display: 'flex', gap: 2, width: '100%' }}>
                                     <Link to='/profiel3'>
-                                        <Button variant='contained' sx={{ bgcolor: 'black' }}>Buy Now</Button>
+                                        <Button variant='contained' sx={{ bgcolor: 'black' }}>Bestel</Button>
                                     </Link>
-                                    <Button variant='contained' sx={{ bgcolor: 'black' }}>Add To Whishlist</Button>
+                                    {/* <Button variant='contained' sx={{ bgcolor: 'black' }}>Add To Whishlist</Button> */}
                                 </Box>
                             </Box>
 
